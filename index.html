@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz App Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="mesh mesh-1"></div>
+  <div class="mesh mesh-2"></div>
+
+  <main class="app-shell">
+    <section class="app-card fade-in">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Gamified Knowledge Challenge</p>
+          <h1>🧠 Quiz App <span>Pro</span></h1>
+          <p class="hero-copy">Choose your difficulty, beat the countdown, and climb the leaderboard with a faster and cleaner quiz experience.</p>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </header>
+
+      <section id="start-screen" class="screen fade-in active-screen">
+        <div class="grid two-col">
+          <div class="card intro-card">
+            <h2>Start a New Quiz</h2>
+            <p>Each question has a countdown timer, instant answer feedback, and score tracking.</p>
+            <div class="stats-row">
+              <div class="mini-stat">
+                <strong>3</strong>
+                <span>Levels</span>
+              </div>
+              <div class="mini-stat">
+                <strong>10s</strong>
+                <span>Per question</span>
+              </div>
+              <div class="mini-stat">
+                <strong>Top 5</strong>
+                <span>Leaderboard</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card control-card">
+            <label for="difficulty">Select difficulty</label>
+            <select id="difficulty">
+              <option value="easy">Easy 😊</option>
+              <option value="medium">Medium 😎</option>
+              <option value="hard">Hard 🔥</option>
+            </select>
+            <button class="primary-btn" onclick="startQuiz()">Start Quiz</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="quiz-screen" class="screen hidden">
+        <div class="top-bar card">
+          <div class="metric-block">
+            <span class="metric-label">⏳ Time Left</span>
+            <strong><span id="time">10</span>s</strong>
+          </div>
+          <div class="metric-block center-block">
+            <span class="metric-label">📈 Progress</span>
+            <strong><span id="progressText">1 / 1</span></strong>
+          </div>
+          <div class="metric-block right-block">
+            <span class="metric-label">⭐ Score</span>
+            <strong><span id="score">0</span></strong>
+          </div>
+        </div>
+
+        <div class="progress-track">
+          <div id="progressBar" class="progress-fill"></div>
+        </div>
+
+        <div class="card question-card">
+          <p class="question-tag" id="questionLevel">Easy Challenge</p>
+          <h2 id="question">Question</h2>
+          <div id="answers" class="answers-grid"></div>
+          <p id="feedback" class="feedback-text"></p>
+        </div>
+      </section>
+
+      <section id="result-screen" class="screen hidden">
+        <div class="grid two-col">
+          <div class="card result-card">
+            <p class="eyebrow success">Quiz Completed</p>
+            <h2>🎉 Great Job!</h2>
+            <p class="result-score">Your Score: <span id="final-score">0</span></p>
+            <div class="input-wrap">
+              <input type="text" id="username" placeholder="Enter your name" />
+            </div>
+            <div class="action-group">
+              <button class="primary-btn" onclick="saveScore()">Save Score</button>
+              <button class="ghost-btn" onclick="restartQuiz()">Play Again</button>
+            </div>
+          </div>
+
+          <div class="card leaderboard-card">
+            <div class="leaderboard-head">
+              <h3>🏆 Leaderboard</h3>
+              <span class="pill">Top 5 Scores</span>
+            </div>
+            <ul id="leaderboard" class="leaderboard-list"></ul>
+            <p id="emptyBoard" class="empty-board">No scores saved yet. Be the first champion.</p>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
